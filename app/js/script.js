@@ -42,4 +42,19 @@ let players = [
 dataPanel.innerHTML = displayPlayerList(players)
   
   
-  
+// Add button function
+dataPanel.addEventListener('click', function(event){
+  let target = event.target
+  const scoreBox = target.parentElement.firstElementChild.innerHTML
+  let score = parseInt(scoreBox,10)
+  if (target.classList.contains('up')){
+    score += 1
+    target.previousElementSibling.innerHTML = score
+  } else if(target.classList.contains('down')){
+    //如果數字大於零才可以扣分，扣到零為止
+    if(score > 0){
+      score -= 1
+      target.parentElement.firstElementChild.innerHTML = score
+    }
+  }
+})
